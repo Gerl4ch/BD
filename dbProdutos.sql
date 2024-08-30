@@ -94,3 +94,16 @@ select nome,valor from produtos where nome like 'f%';
 update produtos set quantidade = quantidade + 50 where valor > 400 and valor < 600;
 
 select * from produtos where valor > 400 and valor < 600;
+
+-- Ordernar Tabela
+
+ select * from produtos order by valor desc;
+ select * from produtos order by valor asc;
+
+ -- Clausula limit
+ select * from produtos limit 5;
+ select * from produtos order by valor limit 5;
+
+
+
+

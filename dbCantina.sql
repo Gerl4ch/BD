@@ -107,7 +107,7 @@ insert into tbProdutos(descricao,quantidade,valor,validade,dataEntrada,horaEntra
 
 
 insert into tbVendas(dataVenda,horaVenda,codUsu,codCli,codProd)values('2024/08/15','12:25:00',2,1,3);
-
+insert into tbVendas(dataVenda,horaVenda,codUsu,codCli,codProd)values('2024/08/15','12:25:00',1,2,1);
 
 -- visualizando os registros das tabelas
 
@@ -126,3 +126,29 @@ update tbProdutos set descricao = 'Teclado Gamer', valor = 350.00 where codProd 
 -- visualizando depois das alterações
 
 select * from tbProdutos;
+
+-- Integridade e concistencia
+
+select prod.descricao as "Nome do produto", 
+forn.nome as "Nome do fornecedor"
+from tbProdutos as prod
+inner join tbFornecedores as forn
+on prod.codForn = forn.codForn;
+  
+select usu.nome as "Nome do Usuário",prod.descricao as "Nome do Produto",cli.nome as "Nome do Cliente"
+from tbVendas as vend
+inner join tbUsuarios as usu
+on vend.codUsu = usu.codUsu
+inner join tbProdutos as prod
+on vend.codProd = prod.codProd
+inner join tbClientes as cli
+on vend.codCli = cli.codCli;
+
+-- Perguntando para a tabela de usuário 
+-- nome do usuario 
+-- nome do Funcionario ligado a esse usuario
+
+select usu.nome as "Nome do Usuário", func.nome as "Nome do Funcionário"
+from tbUsuarios as usu 
+inner join tbFuncionarios as func 
+on usu.codFunc = func.codFunc;
